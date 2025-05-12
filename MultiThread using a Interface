@@ -1,1 +1,44 @@
+package MultiThread;                  //MultiThread using the interface
+
+class Student1 {
+	int a;
+}
+
+class Student2 extends Student1 implements Runnable {
+	static int x;
+	String StudentName;
+	int DelayTime;
+
+	Student2(String StudentName, int DelayTime) {
+		this.StudentName = StudentName;
+		this.DelayTime = DelayTime;
+	}
+
+	public void run() {
+		try {
+			for (int i = 1; i <= 10; i++) {
+				System.out.println(StudentName + ":" + x + "\t\t" + "Task" + i);
+				x++;
+				Thread.sleep(DelayTime);
+			}
+		} catch (InterruptedException e) {
+			System.out.println(e);
+		}
+	}
+}
+
+public class Method2 {
+
+	public static void main(String[] args) {
+		Student s1 = new Student("Anu", 1500);
+		Student s2 = new Student("Surya", 100);
+
+		Thread t1 = new Thread(s1);
+		Thread t2 = new Thread(s2);
+
+		t1.start();
+		t2.start();
+	}
+
+}
 
