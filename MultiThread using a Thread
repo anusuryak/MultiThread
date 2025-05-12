@@ -1,1 +1,37 @@
+package MultiThread;                  //MultiThread using the thread class
+
+class Student extends Thread {
+	static int x;
+	String StudentName;
+	int DelayTime;
+
+	Student(String StudentName, int DelayTime) {
+		this.StudentName = StudentName;
+		this.DelayTime = DelayTime;
+	}
+	
+	public void run() {
+		try {
+			for (int i=1; i <= 10; i++) {
+				System.out.println(StudentName + ":" + x + "\t" + "Task" + i);
+				x++;
+				Thread.sleep(DelayTime);
+			}
+		} catch (InterruptedException e) {
+			System.out.println(e);
+		}
+	}
+}
+
+public class Method1 {
+
+	public static void main(String[] args) {
+		Student s1 = new Student("Anu", 5000);
+		Student s2 = new Student("Surya", 2000);
+		s1.start();
+		s2.start();
+
+	}
+
+}
 
